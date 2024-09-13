@@ -19,10 +19,10 @@ const handleZeros = (base26: string[]) => {
       const previousLetterAsInt = parseInt(base26[i - 1], 36) - 10;
       if (previousLetterAsInt === 0) {
         base26[i - 1] = "";
-        continue;
+      } else {
+        const alphabet = "ZABCDEFGHIJKLMNOPQRSTUVWXY";
+        base26[i - 1] = alphabet[previousLetterAsInt];
       }
-      const alphabet = "ZABCDEFGHIJKLMNOPQRSTUVWXY";
-      base26[i - 1] = alphabet[previousLetterAsInt];
     }
   }
   return base26.join("");

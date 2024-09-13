@@ -9,13 +9,13 @@ const handleZeros = (base26: string[]) => {
   for (let i = 0; i < base26.length; i++) {
     if (base26[i] === "0") {
       base26[i] = "Z";
-      const next = parseInt(base26[i - 1], 36) - 10;
-      if (next === 0) {
+      const previousLetterAsInt = parseInt(base26[i - 1], 36) - 10;
+      if (previousLetterAsInt === 0) {
         base26[i - 1] = "";
         continue;
       }
       const alphabet = "0ABCDEFGHIJKLMNOPQRSTUVWXY";
-      base26[i - 1] = alphabet[next];
+      base26[i - 1] = alphabet[previousLetterAsInt];
     }
   }
   return base26.join("");

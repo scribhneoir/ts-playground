@@ -1,4 +1,4 @@
-const mapToAlphabet = (num: string, offset = 0) => {
+const mapToAlphabet = (num: string) => {
   const alphabet = "ZABCDEFGHIJKLMNOPQRSTUVWXY";
   const index = alphabet.indexOf(num);
   const result = index.toString(26);
@@ -6,11 +6,12 @@ const mapToAlphabet = (num: string, offset = 0) => {
 };
 
 const handleZ = (ab: string[]): string[] => {
+  const alphabet = "ZABCDEFGHIJKLMNOPQRSTUVWXYZ";
   if (ab.length === 1) {
     if (ab[0] === "") {
       ab[0] = "A";
     } else {
-      const letter = mapToAlphabet(ab[ab.length - 1], 1);
+      const letter = alphabet[alphabet.indexOf(ab[0]) + 1];
       ab[0] = letter;
     }
     return ab;
@@ -18,7 +19,7 @@ const handleZ = (ab: string[]): string[] => {
     if (ab[ab.length - 1] === "Z") {
       return [...handleZ(ab.slice(0, ab.length - 1)), "A"];
     } else {
-      const letter = mapToAlphabet(ab[ab.length - 1], 1);
+      const letter = alphabet[alphabet.indexOf(ab[ab.length - 1]) + 1];
       return [...ab.slice(0, ab.length - 1), letter];
     }
   }

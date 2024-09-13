@@ -7,7 +7,9 @@ const decimalToBase = (num: number, base: number) => {
 
 const handleZeros = (base26: string[]) => {
   for (let i = 0; i < base26.length; i++) {
-    if (base26[i] === "0") {
+    const letter = mapToAlphabet(base26[i]);
+    base26[i] = letter;
+    if (letter === "0") {
       base26[i] = "Z";
       const previousLetterAsInt = parseInt(base26[i - 1], 36) - 10;
       if (previousLetterAsInt === 0) {
@@ -36,8 +38,7 @@ const numberToAlphabet = (num: number) => {
   }
 
   const base26 = decimalToBase(num, 26);
-  const alpha = base26.split("").map(mapToAlphabet);
-  const result = handleZeros(alpha);
+  const result = handleZeros(base26.split(""));
 
   return result;
 };

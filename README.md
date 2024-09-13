@@ -1,15 +1,20 @@
 # ts-playground
 
-To install dependencies:
+This repo is a hodgepodge of typescript schenanigans.
 
-```bash
+## Setup
+
+Make sure you have [Bun](https://bun.sh) installed on your system.
+
+```sh
+curl -fsSL https://bun.sh/install | bash
+```
+
+Clone, setup, run, have fun!
+
+```sh
+git checkout https://github.com/scribhneoir/ts-playground.git
+cd ts-playground
 bun install
+bun dev
 ```
-
-To run:
-
-```bash
-bun run index.ts
-```
-
-This project was created using `bun init` in bun v1.1.17. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.

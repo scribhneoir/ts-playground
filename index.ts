@@ -5,28 +5,27 @@ const decimalToBase = (num: number, base: number) => {
   return num.toString(base);
 };
 
+const mapToAlphabet = (num: string) => {
+  const alphabet = "ZABCDEFGHIJKLMNOPQRSTUVWXY";
+  const result = alphabet[parseInt(num, 26)];
+  return result;
+};
+
 const handleZeros = (base26: string[]) => {
   for (let i = 0; i < base26.length; i++) {
     const letter = mapToAlphabet(base26[i]);
     base26[i] = letter;
-    if (letter === "0") {
-      base26[i] = "Z";
+    if (letter === "Z") {
       const previousLetterAsInt = parseInt(base26[i - 1], 36) - 10;
       if (previousLetterAsInt === 0) {
         base26[i - 1] = "";
         continue;
       }
-      const alphabet = "0ABCDEFGHIJKLMNOPQRSTUVWXY";
+      const alphabet = "ZABCDEFGHIJKLMNOPQRSTUVWXY";
       base26[i - 1] = alphabet[previousLetterAsInt];
     }
   }
   return base26.join("");
-};
-
-const mapToAlphabet = (num: string) => {
-  const alphabet = "0ABCDEFGHIJKLMNOPQRSTUVWXY";
-  const result = alphabet[parseInt(num, 26)];
-  return result;
 };
 
 const numberToAlphabet = (num: number) => {

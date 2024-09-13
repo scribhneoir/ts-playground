@@ -64,5 +64,3 @@ for (let i = 1; i <= 13520; i++) {
 }
 
 await Bun.write("output.txt", data);
-
-console.log(toAlphaBase(702)); // "ZZZ"
